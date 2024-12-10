@@ -2,43 +2,48 @@ import socket
 import threading
 import sys
 
-# Configuración del cliente
+# Client configuration
 SERVER_HOST = '127.0.0.1'
 SERVER_PORT = 12345
 BUFFER_SIZE = 1024
 
 def receive_messages(sock):
-    """funcion para recibir mensajes del servidor"""
+    """Receive messages from the server."""
     while True:
         try:
-            message = sock.recv(BUFFER_SIZE)
+            message = sock.recv(BUFFER_SIZE).decode('utf-8')
             if message:
-                print(message.decode())
+                print(message)
             else:
+                print("Disconnected from server.")
                 sock.close()
-                break
-        except:
-            print("conexion cerrada por el servidor")
+                sys.exit()
+        except Exception as e:
+            print(f"Error receiving message: {e}")
             sock.close()
-            break
+            sys.exit()
 
+# Setup client socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((SERVER_HOST, SERVER_PORT))
 
-print("conectado, envia un mensaje")
+print("Connected to the chat server. Type 'exit' to leave.")
 
-# Hilo para recibir mensajes
-threading.Thread(target=receive_messages, args=(client_socket,)).start()
+# Start thread to handle incoming messages
+thread = threading.Thread(target=receive_messages, args=(client_socket,))
+thread.daemon = True
+thread.start()
 
-while True:
-    try:
+try:
+    while True:
         message = input()
         if message.lower() == 'exit':
-            client_socket.send("cliente ha salido del chat.".encode())
+            client_socket.send("Client has left the chat.".encode('utf-8'))
+            print("Exiting chat...")
             client_socket.close()
             sys.exit()
-        client_socket.send(message.encode())
-    except KeyboardInterrupt:
-        print("saliendo del chat")
-        client_socket.close()
-        sys.exit()
+        client_socket.send(message.encode('utf-8'))
+except KeyboardInterrupt:
+    print("\nDisconnected.")
+    client_socket.close()
+    sys.exit()
