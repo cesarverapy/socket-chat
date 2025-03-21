@@ -54,20 +54,6 @@ To exit the chat, type `exit` in the client terminal or press `Ctrl+C`.
 
 ---
 
-## How It Works
-
-1. **Server:**
-   - Listens for incoming connections on `127.0.0.1:12345`.
-   - Accepts multiple clients and maintains a list of active connections.
-   - Relays messages from one client to all other connected clients using a broadcast mechanism.
-
-2. **Client:**
-   - Connects to the server at the specified host and port.
-   - Allows the user to input messages, which are sent to the server.
-   - Displays messages broadcasted by the server.
-
----
-
 ## Project Structure
 
 - **`chat_server.py`:** The server-side script manages client connections and relays messages between them.
