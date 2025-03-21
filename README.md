@@ -1,6 +1,6 @@
 # Socket-Chat Application
 
-A minimalistic chat application built in Python that allows multiple clients to communicate via a centralized server. The project demonstrates socket programming and multithreading with simplicity in mind.
+A minimalistic cli chat built in Python that allows multiple clients to communicate via a centralized server. The project demonstrates socket programming and multithreading with simplicity in mind.
 
 ---
 
