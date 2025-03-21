@@ -13,12 +13,6 @@ A minimalistic chat application built in Python that allows multiple clients to 
 
 ---
 
-## Requirements
-
-- Python 3.6 or newer.
-
----
-
 ## Installation and Usage
 
 ### 1. Clone the repository
