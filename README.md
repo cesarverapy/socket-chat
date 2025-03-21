@@ -79,9 +79,9 @@ Client 1: Hello, this is Client 1!
 
 ## Future Improvements
 
-- Add **dynamic configuration** for host and port through command-line arguments or a configuration file.
-- Integrate **SSL/TLS encryption** for secure communication.
-- Develop a **graphical user interface (GUI)** using frameworks like Tkinter or PyQt.
+- Add **dynamic configuration** for host and port through command line arguments or a config file.
+- Integrate **SSL/TLS encryption**
+- Develop a **graphical user interface (GUI)**
 - Implement **logging** on the server to track connections, disconnections, and message activity.
 - Add **usernames/nicknames** for better chat organization.
-- Introduce **chat rooms** or private messaging functionality.
+- Integration of **chat rooms** or private messaging functionality.
